@@ -1,0 +1,93 @@
+{
+  "main": {
+    "id": "2cd3de927f26913c",
+    "type": "split",
+    "children": [
+      {
+        "id": "f40404ac8b96e8b8",
+        "type": "leaf",
+        "active": true,
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "index.md",
+            "mode": "source"
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "5a702b6bed5b7450",
+    "type": "split",
+    "children": [
+      {
+        "id": "e836506cd136e9eb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "856e7d3af9b70186",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "b5c2ef1f91d4b01e",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "12cd2ac5042733f7",
+    "type": "split",
+    "children": [
+      {
+        "id": "376bab5946aaac86",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a7ff2fc1e021d2bd",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "index.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "lastOpenFiles": [
+    "index.md.md",
+    "hello.md",
+    "Untitled.md"
+  ]
+}
