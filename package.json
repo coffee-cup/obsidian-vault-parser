@@ -1,0 +1,45 @@
+{
+  "name": "obsidian-vault-parser",
+  "author": "Jake Runzer",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/obsidian-vault-parser.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "size-limit": [
+    {
+      "path": "dist/obsidian-vault-parser.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/obsidian-vault-parser.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^4.9.1",
+    "husky": "^4.3.0",
+    "size-limit": "^4.9.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.1.2"
+  },
+  "peerDependencies": {}
+}
