@@ -1,12 +1,24 @@
 import path from "path";
-import { readVault, parseWikiLinks } from "../src/index";
+import { getFileName, parseWikiLinks } from "../src/files";
+import { readVault } from "../src/index";
 
 describe("vault", () => {
   it("parse vault", async () => {
     const vaultPath = path.resolve(__dirname, "../test-vault");
     const vault = await readVault(vaultPath);
 
-    console.log(vault.files.hello);
+    expect([...vault.files.hello.links]).toEqual(["world"]);
+    expect([...vault.files.hello.backLinks]).toEqual(["index", "world"]);
+  });
+});
+
+describe("files", () => {
+  it("gets filename from filepath", () => {
+    expect(getFileName("./hello.md")).toBe("hello");
+    expect(getFileName("./foo/bar.md")).toBe("bar");
+    expect(getFileName("/hello")).toBe("hello");
+    expect(getFileName("/foo/bar")).toBe("bar");
+    expect(getFileName("/foo/bar.md")).toBe("bar");
   });
 
   it("parses wikilinks", () => {

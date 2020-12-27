@@ -1,25 +1,30 @@
 import glob from "glob-promise";
 import fs from "fs";
 import { File, Vault } from "./types";
-import { getFileName } from "./files";
+import { getFileName, parseWikiLinks, readFile } from "./files";
 import matter from "gray-matter";
-
-export const readFile = async (path: string): Promise<string> =>
-  fs.promises.readFile(path, "utf-8");
-
-export const parseWikiLinks = (contents: string): string[] => {
-  const linkRegex = /\[\[([a-zA-Z0-9\-]+)\]\]/g;
-
-  const matches = [...contents.matchAll(linkRegex)];
-  return matches.map((m) => m[1]);
-};
 
 export const connectLinks = (vault: Vault) => {
   for (const file of Object.values(vault.files)) {
-    const links = parseWikiLinks(file.contents)
-      .filter((name) => vault.files[name] != null)
-      .map((name) => vault.files[name]);
-    file.links = links;
+    const links = parseWikiLinks(file.contents).filter(
+      (name) => vault.files[name] != null
+    );
+
+    file.links = new Set(links);
+  }
+};
+
+const findFilesThatLinkTo = (vault: Vault, name: string): Set<string> => {
+  const files = Object.values(vault.files).filter(
+    (f) => f.name !== name && f.links.has(name)
+  );
+
+  return new Set(files.map((f) => f.name));
+};
+
+export const connectBackLinks = (vault: Vault) => {
+  for (const file of Object.values(vault.files)) {
+    file.backLinks = findFilesThatLinkTo(vault, file.name);
   }
 };
 
@@ -33,7 +38,8 @@ export const parseFile = async (filePath: string): Promise<File> => {
     filePath,
     name,
     published,
-    links: [],
+    links: new Set(),
+    backLinks: new Set(),
     tags: [],
     contents,
     frontMatter,
@@ -55,6 +61,7 @@ export const readVault = async (path: string): Promise<Vault> => {
   }
 
   connectLinks(vault);
+  connectBackLinks(vault);
 
   return vault;
 };

@@ -3,7 +3,8 @@ export interface File {
   name: string;
   published: boolean;
   tags: string[];
-  links: File[];
+  links: Set<string>;
+  backLinks: Set<string>;
   contents: string;
   frontMatter: Record<string, any>;
 }
