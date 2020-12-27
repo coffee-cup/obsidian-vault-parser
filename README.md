@@ -1,5 +1,7 @@
 # obsidian-vault-parser
 
+![CI](https://github.com/coffee-cup/obsidian-vault-parser/workflows/CI/badge.svg)
+
 Vault parser for the [Obsidian](https://obsidian.md/) note taking app.
 
 ## Usage
@@ -40,34 +42,34 @@ export interface File {
 }
 ```
 
-#### `path`
+**`path`**
 
 Absolute path to the file.
 
-#### `name`
+**`name`**
 
 Name of the file that can be referenced by other files in the vault. This must
 be unique across the vault.
 
 e.g. file with path `./foo/bar.md` is `bar`.
 
-#### `tags`
+**`tags`**
 
 A list of `#tags` found in the file
 
-#### `links`
+**`links`**
 
 Names of other files that this file [[links]] to with.
 
-### `backLinks`
+**`backLinks`**
 
 Names of other files that link to this file.
 
-### `frontMatter`
+**`frontMatter`**
 
 [Front matter](https://jekyllrb.com/docs/front-matter/) parsed from the top of the file.
 
-### `content`
+**`content`**
 
 String content of the document with front matter removed.
 
