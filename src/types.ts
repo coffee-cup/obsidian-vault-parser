@@ -1,14 +1,14 @@
 export interface File {
-  filePath: string;
+  path: string;
   name: string;
-  published: boolean;
   tags: string[];
   links: Set<string>;
   backLinks: Set<string>;
-  contents: string;
   frontMatter: Record<string, any>;
+  content: string;
 }
 
 export interface Vault {
+  path: string;
   files: Record<string, File>;
 }
