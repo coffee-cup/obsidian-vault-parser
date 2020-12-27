@@ -8,8 +8,8 @@ export const readFile = async (path: string): Promise<string> =>
   fs.promises.readFile(path, "utf-8");
 
 export const parseWikiLinks = (contents: string): string[] => {
-  const linkRegex = /\[\[([a-zA-Z0-9\-]+)\]\]/g;
+  const linkRegex = /\[\[([a-zA-Z0-9-]+)\]\]/g;
 
   const matches = [...contents.matchAll(linkRegex)];
-  return matches.map((m) => m[1]);
+  return matches.map(m => m[1]);
 };

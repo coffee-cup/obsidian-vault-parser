@@ -6,7 +6,7 @@ import { File, Vault } from "./types";
 export const connectLinks = (vault: Vault) => {
   for (const file of Object.values(vault.files)) {
     const links = parseWikiLinks(file.content).filter(
-      (name) => vault.files[name] != null
+      name => vault.files[name] != null,
     );
 
     file.links = new Set(links);
@@ -15,10 +15,10 @@ export const connectLinks = (vault: Vault) => {
 
 const findFilesThatLinkTo = (vault: Vault, name: string): Set<string> => {
   const files = Object.values(vault.files).filter(
-    (f) => f.name !== name && f.links.has(name)
+    f => f.name !== name && f.links.has(name),
   );
 
-  return new Set(files.map((f) => f.name));
+  return new Set(files.map(f => f.name));
 };
 
 export const connectBackLinks = (vault: Vault) => {

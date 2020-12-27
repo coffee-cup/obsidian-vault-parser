@@ -34,7 +34,7 @@ describe("files", () => {
 Hello [[world]] this is a test
 
 Woot [[woot]].
-    `)
+    `),
     ).toEqual(["world", "woot"]);
   });
 });
