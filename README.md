@@ -1,6 +1,8 @@
 # obsidian-vault-parser
 
 ![CI](https://github.com/coffee-cup/obsidian-vault-parser/workflows/CI/badge.svg)
+[![](https://img.shields.io/npm/v/obsidian-vault-parser?style=flat-square)](https://www.npmjs.com/package/obsidian-vault-parser)
+[![](https://img.shields.io/github/license/coffee-cup/obsidian-vault-parser?style=flat-square&color=brightgreen)](https://github.com/coffee-cup/obsidian-vault-parser/blob/main/LICENSE)
 
 Vault parser for the [Obsidian](https://obsidian.md/) note taking app.
 
