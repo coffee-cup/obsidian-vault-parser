@@ -32,6 +32,14 @@
       "limit": "10 KB"
     }
   ],
+  "homepage": "https://github.com/coffee-cup/obsidian-vault-parser",
+  "bugs": {
+    "url": "https://github.com/coffee-cup/obsidian-vault-parser/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coffee-cup/obsidian-vault-parser.git"
+  },
   "dependencies": {
     "glob-promise": "^3.4.0",
     "gray-matter": "^4.0.2"
