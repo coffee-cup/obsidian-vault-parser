@@ -1,7 +1,7 @@
 import glob from "glob-promise";
 import matter from "gray-matter";
 import { getFileName, parseWikiLinks, readFile } from "./files";
-import { File, Vault } from "./types";
+import { File, ReadVaultOptions, Vault } from "./types";
 
 export const connectLinks = (vault: Vault) => {
   for (const file of Object.values(vault.files)) {
@@ -27,6 +27,17 @@ export const connectBackLinks = (vault: Vault) => {
   }
 };
 
+export const removeUnpublished = (
+  vault: Vault,
+  isPublished: (f: File) => boolean,
+) => {
+  for (const file of Object.values(vault.files)) {
+    if (!isPublished(file)) {
+      delete vault.files[file.name];
+    }
+  }
+};
+
 export const parseFile = async (path: string): Promise<File> => {
   const rawContent = await readFile(path);
   const name = getFileName(path);
@@ -48,7 +59,10 @@ export const emptyVault = (path: string): Vault => ({
   files: {},
 });
 
-export const readVault = async (path: string): Promise<Vault> => {
+export const readVault = async (
+  path: string,
+  options?: ReadVaultOptions,
+): Promise<Vault> => {
   const files = await glob(`${path}/**/*.md`);
 
   const vault = emptyVault(path);
@@ -58,10 +72,12 @@ export const readVault = async (path: string): Promise<Vault> => {
     vault.files[file.name] = file;
   }
 
+  if (options?.isPublished != null) {
+    removeUnpublished(vault, options.isPublished);
+  }
+
   connectLinks(vault);
   connectBackLinks(vault);
 
   return vault;
 };
-
-export default readVault;

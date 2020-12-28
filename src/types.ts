@@ -12,3 +12,7 @@ export interface Vault {
   path: string;
   files: Record<string, File>;
 }
+
+export interface ReadVaultOptions {
+  isPublished: (f: File) => boolean;
+}

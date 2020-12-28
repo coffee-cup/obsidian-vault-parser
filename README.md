@@ -7,7 +7,7 @@ Vault parser for the [Obsidian](https://obsidian.md/) note taking app.
 ## Usage
 
 ```ts
-import readVault from "obsidian-vault-parser"
+import { readVault } from "obsidian-vault-parser"
 
 const vault = readVault("./path/to/vault")
 console.log(vault)
