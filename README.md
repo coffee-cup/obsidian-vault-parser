@@ -6,11 +6,25 @@ Vault parser for the [Obsidian](https://obsidian.md/) note taking app.
 
 ## Usage
 
+Read an Obsidian vault from a path
+
 ```ts
 import { readVault } from "obsidian-vault-parser"
 
 const vault = readVault("./path/to/vault")
 console.log(vault)
+```
+
+`obsidian-vault-parser` also has the ability to only include files that are
+_published_. You can pass an `isPublished` predicate in as an option. Files that
+do not pass this predicate will not be included in the vault.
+
+```ts
+import { readVault } from "obsidian-vault-parser"
+
+const vault = readVault("./path/to/vault", {
+  isPublished: file => file.frontMatter.published != null
+})
 ```
 
 ## Documentation
