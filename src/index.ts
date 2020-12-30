@@ -1,7 +1,7 @@
 import glob from "glob-promise";
 import matter from "gray-matter";
 import { getFileName, parseWikiLinks, readFile } from "./files";
-import { File, ReadVaultOptions, Vault } from "./types";
+import { VaultPage, ReadVaultOptions, Vault } from "./types";
 
 export * from "./types";
 
@@ -11,16 +11,16 @@ export const connectLinks = (vault: Vault) => {
       name => vault.files[name] != null,
     );
 
-    file.links = new Set(links);
+    file.links = links;
   }
 };
 
-const findFilesThatLinkTo = (vault: Vault, name: string): Set<string> => {
+const findFilesThatLinkTo = (vault: Vault, name: string): string[] => {
   const files = Object.values(vault.files).filter(
-    f => f.name !== name && f.links.has(name),
+    f => f.name !== name && f.links.includes(name),
   );
 
-  return new Set(files.map(f => f.name));
+  return files.map(f => f.name);
 };
 
 export const connectBackLinks = (vault: Vault) => {
@@ -31,7 +31,7 @@ export const connectBackLinks = (vault: Vault) => {
 
 export const removeUnpublished = (
   vault: Vault,
-  isPublished: (f: File) => boolean,
+  isPublished: (f: VaultPage) => boolean,
 ) => {
   for (const file of Object.values(vault.files)) {
     if (!isPublished(file)) {
@@ -40,7 +40,7 @@ export const removeUnpublished = (
   }
 };
 
-export const parseFile = async (path: string): Promise<File> => {
+export const parseFile = async (path: string): Promise<VaultPage> => {
   const rawContent = await readFile(path);
   const name = getFileName(path);
   const { data: frontMatter, content } = matter(rawContent);
@@ -48,8 +48,8 @@ export const parseFile = async (path: string): Promise<File> => {
   return {
     path,
     name,
-    links: new Set(),
-    backLinks: new Set(),
+    links: [],
+    backLinks: [],
     tags: [],
     frontMatter,
     content,

@@ -7,8 +7,8 @@ describe("vault", () => {
     const vaultPath = path.resolve(__dirname, "../test-vault");
     const vault = await readVault(vaultPath);
 
-    expect([...vault.files.hello.links]).toEqual(["world"]);
-    expect([...vault.files.hello.backLinks]).toEqual(["index", "world"]);
+    expect(vault.files.hello.links).toEqual(["world"]);
+    expect(vault.files.hello.backLinks).toEqual(["index", "world"]);
   });
 
   it("removes unpublished files from vault", async () => {
@@ -17,8 +17,8 @@ describe("vault", () => {
       isPublished: f => !!f.frontMatter.published,
     });
 
-    expect([...vault.files.hello.links]).toEqual([]);
-    expect([...vault.files.hello.backLinks]).toEqual(["index"]);
+    expect(vault.files.hello.links).toEqual([]);
+    expect(vault.files.hello.backLinks).toEqual(["index"]);
   });
 });
 
