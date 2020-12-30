@@ -1,18 +1,18 @@
-export interface File {
+export interface VaultPage {
   path: string;
   name: string;
   tags: string[];
-  links: Set<string>;
-  backLinks: Set<string>;
+  links: string[];
+  backLinks: string[];
   frontMatter: Record<string, any>;
   content: string;
 }
 
 export interface Vault {
   path: string;
-  files: Record<string, File>;
+  files: Record<string, VaultPage>;
 }
 
 export interface ReadVaultOptions {
-  isPublished: (f: File) => boolean;
+  isPublished?: (f: VaultPage) => boolean;
 }
