@@ -3,6 +3,8 @@ import matter from "gray-matter";
 import { getFileName, parseWikiLinks, readFile } from "./files";
 import { File, ReadVaultOptions, Vault } from "./types";
 
+export * from "./types";
+
 export const connectLinks = (vault: Vault) => {
   for (const file of Object.values(vault.files)) {
     const links = parseWikiLinks(file.content).filter(
