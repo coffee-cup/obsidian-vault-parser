@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^4.9.1",
-    "@types/node": "^14.14.10",
+    "@types/node": "^14.14.17",
     "husky": "^4.3.0",
     "size-limit": "^4.9.1",
     "ts-node": "^9.1.1",
