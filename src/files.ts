@@ -10,6 +10,6 @@ export const readFile = async (path: string): Promise<string> =>
 export const parseWikiLinks = (content: string): string[] => {
   const linkRegex = /\[\[([a-zA-Z0-9-]+)\]\]/g;
 
-  const matches = [...content.matchAll(linkRegex)];
+  const matches = Array.from(content.matchAll(linkRegex));
   return matches.map(m => m[1]);
 };
