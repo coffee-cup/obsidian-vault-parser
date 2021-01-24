@@ -38,16 +38,16 @@ Represents an entire Obsidian vault.
 ```ts
 export interface Vault {
   path: string;
-  files: Record<string, File>;
+  files: Record<string, VaultFile>;
 }
 ```
 
-### `File`
+### `VaultFile`
 
 Represents an individual file inside of a vault.
 
 ```ts
-export interface File {
+export interface VaultFile {
   path: string;
   name: string;
   tags: string[];
