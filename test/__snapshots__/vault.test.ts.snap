@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`vault parse vault 1`] = `
+Object {
+  "files": Object {
+    "hello": Object {
+      "backLinks": Array [
+        "index",
+        "world",
+      ],
+      "content": "
+This is the hello page!
+
+go to [[world]]
+
+hey there [[projects|project alias]]
+",
+      "frontMatter": Object {
+        "published": true,
+      },
+      "links": Array [
+        "world",
+        "projects",
+      ],
+      "name": "hello",
+      "path": "/Users/jakerunzer/dev/obsidian-vault-parser/test-vault/hello.md",
+      "tags": Array [],
+    },
+    "index": Object {
+      "backLinks": Array [],
+      "content": "
+# Hello world
+
+[[hello]]",
+      "frontMatter": Object {
+        "published": true,
+      },
+      "links": Array [
+        "hello",
+      ],
+      "name": "index",
+      "path": "/Users/jakerunzer/dev/obsidian-vault-parser/test-vault/index.md",
+      "tags": Array [],
+    },
+    "my-awesome-project": Object {
+      "backLinks": Array [
+        "projects",
+      ],
+      "content": "
+# My Project
+
+Hello, this is my awesome project
+",
+      "frontMatter": Object {
+        "published": true,
+      },
+      "links": Array [],
+      "name": "my-awesome-project",
+      "path": "/Users/jakerunzer/dev/obsidian-vault-parser/test-vault/projects/my-awesome-project.md",
+      "tags": Array [],
+    },
+    "projects": Object {
+      "backLinks": Array [
+        "hello",
+      ],
+      "content": "
+Some projects are
+
+- [[my-awesome-project]]
+",
+      "frontMatter": Object {
+        "published": true,
+      },
+      "links": Array [
+        "my-awesome-project",
+      ],
+      "name": "projects",
+      "path": "/Users/jakerunzer/dev/obsidian-vault-parser/test-vault/projects.md",
+      "tags": Array [],
+    },
+    "world": Object {
+      "backLinks": Array [
+        "hello",
+      ],
+      "content": "[[hello]] world!
+",
+      "frontMatter": Object {},
+      "links": Array [
+        "hello",
+      ],
+      "name": "world",
+      "path": "/Users/jakerunzer/dev/obsidian-vault-parser/test-vault/world.md",
+      "tags": Array [],
+    },
+  },
+  "path": "/Users/jakerunzer/dev/obsidian-vault-parser/test-vault",
+}
+`;
