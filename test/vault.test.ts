@@ -9,8 +9,6 @@ describe("vault", () => {
 
     expect(vault.files.hello.links).toEqual(["world", "projects"]);
     expect(vault.files.hello.backLinks).toEqual(["index", "world"]);
-
-    expect(vault).toMatchSnapshot();
   });
 
   it("removes unpublished files from vault", async () => {
