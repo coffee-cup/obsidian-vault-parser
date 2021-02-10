@@ -20,6 +20,13 @@ describe("vault", () => {
     expect(vault.files.hello.links).toEqual(["projects"]);
     expect(vault.files.hello.backLinks).toEqual(["index"]);
   });
+
+  it("gets attachmentFolderPath", async () => {
+    const vaultPath = path.resolve(__dirname, "../test-vault");
+    const vault = await readVault(vaultPath);
+
+    expect(vault.config.attachmentFolderPath).toEqual("media");
+  });
 });
 
 describe("files", () => {

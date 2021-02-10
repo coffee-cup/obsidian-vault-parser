@@ -59,7 +59,18 @@ export const parseFile = async (path: string): Promise<VaultPage> => {
 export const emptyVault = (path: string): Vault => ({
   path,
   files: {},
+  config: {},
 });
+
+export const readVaultConfig = async (path: string): Promise<any> => {
+  try {
+    const configContents = await readFile(`${path}/.obsidian/config`);
+    return JSON.parse(configContents);
+  } catch (e) {
+    // Obsidian config not found or unparsable
+    return {};
+  }
+};
 
 export const readVault = async (
   path: string,
@@ -68,6 +79,7 @@ export const readVault = async (
   const files = await glob(`${path}/**/*.md`);
 
   const vault = emptyVault(path);
+  vault.config = await readVaultConfig(path);
 
   for (const filePath of files) {
     const file = await parseFile(filePath);
