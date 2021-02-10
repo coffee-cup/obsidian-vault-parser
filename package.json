@@ -42,7 +42,7 @@
     "url": "https://github.com/coffee-cup/obsidian-vault-parser.git"
   },
   "dependencies": {
-    "glob-promise": "^3.4.0",
+    "glob-promise": "^4.0.1",
     "gray-matter": "^4.0.2"
   },
   "devDependencies": {
