@@ -41,7 +41,7 @@ export const removeUnpublished = (
 };
 
 export const parseFile = async (path: string): Promise<VaultPage> => {
-  const rawContent = await readFile(path);
+  const { contents: rawContent, stats } = await readFile(path);
   const name = getFileName(path);
   const { data: frontMatter, content } = matter(rawContent);
 
@@ -53,6 +53,8 @@ export const parseFile = async (path: string): Promise<VaultPage> => {
     tags: [],
     frontMatter,
     content,
+    createdAt: stats.birthtimeMs,
+    updatedAt: stats.mtimeMs,
   };
 };
 
@@ -64,7 +66,9 @@ export const emptyVault = (path: string): Vault => ({
 
 export const readVaultConfig = async (path: string): Promise<any> => {
   try {
-    const configContents = await readFile(`${path}/.obsidian/config`);
+    const { contents: configContents } = await readFile(
+      `${path}/.obsidian/config`,
+    );
     return JSON.parse(configContents);
   } catch (e) {
     // Obsidian config not found or unparsable

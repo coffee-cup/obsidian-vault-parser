@@ -6,6 +6,8 @@ export interface VaultPage {
   backLinks: string[];
   frontMatter: Record<string, any>;
   content: string;
+  createdAt: number;
+  updatedAt: number;
 }
 
 export interface Vault {
