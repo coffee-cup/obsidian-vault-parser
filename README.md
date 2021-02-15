@@ -38,7 +38,21 @@ Represents an entire Obsidian vault.
 ```ts
 export interface Vault {
   path: string;
-  files: Record<string, VaultFile>;
+  files: Record<string, VaultPage>;
+  config: VaultConfig;
+}
+```
+
+### `VaultConfig`
+
+Parsed contents of `.obsidian/config`.
+
+```ts
+export interface VaultConfig {
+  theme?: string;
+  vimMode?: boolean;
+  attachmentFolderPath?: string;
+  pluginEnabledStatus?: any;
 }
 ```
 
@@ -47,14 +61,16 @@ export interface Vault {
 Represents an individual file inside of a vault.
 
 ```ts
-export interface VaultFile {
+export interface VaultPage {
   path: string;
   name: string;
   tags: string[];
-  links: Set<string>;
-  backLinks: Set<string>;
+  links: string[];
+  backLinks: string[];
   frontMatter: Record<string, any>;
   content: string;
+  createdAt: number;
+  updatedAt: number;
 }
 ```
 
@@ -88,6 +104,14 @@ Names of other files that link to this file.
 **`content`**
 
 String content of the document with front matter removed.
+
+**`createdAt`**
+
+Birthtime of file in milliseconds.
+
+**`updatedAt`**
+
+Last modified date of file in milliseconds.
 
 ### `readVault(path: string) => Vault`
 
