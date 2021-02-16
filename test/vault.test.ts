@@ -47,6 +47,7 @@ describe("files", () => {
   it("parses wikilinks", () => {
     expect(parseWikiLinks("hello")).toEqual([]);
     expect(parseWikiLinks("[[hello]]")).toEqual(["hello"]);
+    expect(parseWikiLinks("[[Hello World]]")).toEqual(["hello world"]);
     expect(parseWikiLinks("hello [[world]]")).toEqual(["world"]);
     expect(parseWikiLinks("foo [[hello-world-123]] bar")).toEqual([
       "hello-world-123",

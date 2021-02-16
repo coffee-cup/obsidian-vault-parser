@@ -2,7 +2,7 @@ import path from "path";
 import fs, { Stats } from "fs";
 
 export const getFileName = (filepath: string): string =>
-  path.parse(filepath).name;
+  path.parse(filepath).name.toLowerCase();
 
 export const readFile = async (
   path: string,
@@ -17,6 +17,6 @@ export const parseWikiLinks = (content: string): string[] => {
   const matches = Array.from(content.matchAll(linkRegex));
   return matches.map(m => {
     const splits = m[1].split("|");
-    return splits[0];
+    return splits[0].toLowerCase();
   });
 };
