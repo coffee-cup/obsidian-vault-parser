@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "glob-promise": "^4.0.1",
-    "gray-matter": "^4.0.2"
+    "gray-matter": "^4.0.3"
   },
   "devDependencies": {
     "@size-limit/preset-small-lib": "^4.9.2",
