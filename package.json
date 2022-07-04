@@ -46,10 +46,10 @@
     "gray-matter": "^4.0.3"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^4.9.2",
+    "@size-limit/preset-small-lib": "^7.0.8",
     "@types/node": "^16.10.3",
     "husky": "^7.0.2",
-    "size-limit": "^4.9.2",
+    "size-limit": "^7.0.8",
     "ts-node": "^10.2.1",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
